@@ -10,10 +10,26 @@ dotenv.config();
 
 const app = express();
 // 
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CLIENT_URL, // your production client (e.g., https://ai-psychologist.vercel.app)
+].filter(Boolean); // removes undefined/null entries
+
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like Postman, server-to-server)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn("Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST"],
-  credentials: true, // allows cookies/auth headers if needed
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -23,7 +39,6 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: corsOptions,
 });
-
 // message when new user conencts
 io.on("connection", (socket) => {
   console.log("a user connected:", socket.id);
