@@ -21,7 +21,7 @@ const server = http.createServer(app);
 // create socket.io instance
 const io = new Server(server, {
   cors: {
-    origin:  'http://localhost:5173',
+    origin:  'https://ai-psychologist.vercel.app',
     methods: ["GET", "POST"],
   },
 });
