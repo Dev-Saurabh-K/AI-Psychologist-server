@@ -9,21 +9,19 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-// const op=[]
-// const corsOptions = {
-//   // Set the 'origin' property to the exact URL of your frontend
-//   origin:  'http://localhost:5173',
-// };
-app.use(cors());
+// 
+const corsOptions = {
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  methods: ["GET", "POST"],
+  credentials: true, // allows cookies/auth headers if needed
+};
+
+app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 
-// create socket.io instance
 const io = new Server(server, {
-  cors: {
-    origin:  'https://ai-psychologist.vercel.app',
-    methods: ["GET", "POST"],
-  },
+  cors: corsOptions,
 });
 
 // message when new user conencts
