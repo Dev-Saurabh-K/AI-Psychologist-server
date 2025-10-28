@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import Message from "../models/userChat.js"
-import summaryModel from "../models/summery.js";
+// import summaryModel from "../models/summery.js";
 
 export async function aiService(input) {
   const ai = new GoogleGenAI({
@@ -39,13 +39,14 @@ let data = await Message.find({ username: 'ftyhb' })
 
 
 //context----------last 5 chats
-let payload=[data[data.length-1].text,data[data.length-2].text,data[data.length-3].text,data[data.length-4].text,data[data.length-5].text]
-console.log(payload)
+// let payload=[data[data.length-1].text,data[data.length-2].text,data[data.length-3].text,data[data.length-4].text,data[data.length-5].text]
+// let payload=[data[data.length-1]]
+// console.log(payload)
 
 
-await chat.sendMessage({
-  message:payload
-})
+// await chat.sendMessage({
+//   message:payload
+// })
 //earlier used input instead of payload---working
 
   let response = await chat.sendMessage({

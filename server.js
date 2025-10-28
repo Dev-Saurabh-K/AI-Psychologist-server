@@ -9,6 +9,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+// const op=[]
+// const corsOptions = {
+//   // Set the 'origin' property to the exact URL of your frontend
+//   origin:  'http://localhost:5173',
+// };
 app.use(cors());
 
 const server = http.createServer(app);
@@ -16,12 +21,10 @@ const server = http.createServer(app);
 // create socket.io instance
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL,  //i have to bring url of client
+    origin:  'http://localhost:5173',
     methods: ["GET", "POST"],
   },
 });
-
-let message;
 
 // message when new user conencts
 io.on("connection", (socket) => {
