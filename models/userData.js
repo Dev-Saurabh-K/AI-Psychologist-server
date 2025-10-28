@@ -1,5 +1,4 @@
-
-import mongoose from './db.js';
+import mongoose from "./db";
 
 
 // import dotenv from "dotenv";
@@ -16,19 +15,15 @@ import mongoose from './db.js';
 //   .then(() => console.log('MongoDB connected successfully'))
 //   .catch(err => console.error('MongoDB connection error:', err));
 
-const MessageSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
     trim: true,
   },
-  text: {
+  password:{
     type: String,
     required: true,
-  },
-  reply:{
-    type: String,
-    // required: true,
   },
   timestamp: {
     type: Date,
@@ -36,5 +31,5 @@ const MessageSchema = new mongoose.Schema({
   },
 });
 
-const Message = mongoose.model('Message', MessageSchema);
-export default Message;
+const User = mongoose.model('User', UserSchema);
+export default User;

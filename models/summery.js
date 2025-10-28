@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "./db";
 
 // Replace 'chatApp' with your database name
 const DB_URI = 'mongodb://localhost:27017/chatApp'; 

@@ -7,7 +7,7 @@ export async function aiService(input) {
     apiKey: process.env.GEMINI_API_KEY,
   });
 
-  const modelName = "gemini-2.0-flash";
+  const modelName = "gemini-2.5-flash";
 
   const chat = ai.chats.create({ model: modelName });
 
