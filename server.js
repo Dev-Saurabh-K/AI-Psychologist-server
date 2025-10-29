@@ -4,6 +4,8 @@ import { Server } from "socket.io";
 import cors from "cors";
 import Message from "./models/userChat.js";
 import { aiService } from "./gemini/ai.js";
+import { logVel } from "./middleware/loginValidation.js";
+import { signVel } from "./middleware/signupValidation.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -72,13 +74,28 @@ io.on("connection", (socket) => {
   });
 });
 
-app.post('/login',(req,res)=>{
+app.post('/login',logVel,(req,res)=>{
   const {username, password}=req.body;
-  console.log(username,password);
+  // console.log(username,password);
+  console.log(req.data);
   res.json({
     username,
     password
   });
+})
+
+
+
+app.post('/signup',signVel,(req,res)=>{
+  // const {username,password}=req.body;
+  // console.log(username);
+  // console.log(req.data);
+  console.log(req.data);
+  res.json({
+    success: true,
+    message: "User registered successfully",
+    data: req.data
+  })
 })
 
 server.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
