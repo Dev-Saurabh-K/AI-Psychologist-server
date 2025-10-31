@@ -85,7 +85,7 @@ app.post('/login',logVel,(req,res)=>{
   // console.log(req.data);
   res.cookie("username", username, {
     httpOnly: true,   // can't be accessed by JS (for security)
-    secure: false,    // true if using HTTPS
+    secure: true,    // true if using HTTPS
     sameSite: "lax",  // controls cross-site cookie behavior
     maxAge: 24 * 60 * 60 * 1000, // 1 day)
   })
