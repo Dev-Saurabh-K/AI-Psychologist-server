@@ -38,7 +38,7 @@ const corsOptions = {
   methods: ["GET", "POST"],
   credentials: true,
   sameSite: "none",//////////addedddddd faterwards
-  secure: false///////also added afterwards remove if dont work
+  secure: true///////also added afterwards remove if dont work
 };
 
 app.use(cors(corsOptions));
