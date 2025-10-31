@@ -1,11 +1,11 @@
-import mongoose from "./db";
+import mongoose from "./db.js";
 
 // Replace 'chatApp' with your database name
-const DB_URI = 'mongodb://localhost:27017/chatApp'; 
+// const DB_URI = 'mongodb://localhost:27017/chatApp'; 
 
-mongoose.connect(DB_URI)
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// mongoose.connect(DB_URI)
+//   .then(() => console.log('MongoDB connected successfully'))
+//   .catch(err => console.error('MongoDB connection error:', err));
 
 const SummarySchema = new mongoose.Schema({
   username: {
