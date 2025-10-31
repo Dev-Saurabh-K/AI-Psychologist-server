@@ -86,7 +86,7 @@ app.post('/login',logVel,(req,res)=>{
   res.cookie("username", username, {
     httpOnly: true,   // can't be accessed by JS (for security)
     secure: true,    // true if using HTTPS
-    sameSite: "lax",  // controls cross-site cookie behavior
+    sameSite: "None",  // controls cross-site cookie behavior
     maxAge: 24 * 60 * 60 * 1000, // 1 day)
   })
   // res.setHeader("Set-Cookie","isLoggedIn=true, path=/")
